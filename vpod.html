@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VPOD: Visual Physiology Opsin Database</title>
+    <meta name="description" content="A database of opsins and machine-learning models to predict &lambda;max phenotypes.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            900: '#0c4a6e',
+                        },
+                        dark: '#0f172a'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar { height: 8px; width: 8px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.05); border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2); border-radius: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.3); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-primary-500 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="database" class="text-primary-600 w-8 h-8"></i>
+                    <span class="font-bold text-xl tracking-tight text-slate-900">VPOD <span class="text-xs font-medium bg-primary-100 text-primary-900 px-2 py-1 rounded-full ml-1">v1.3</span></span>
+                </div>
+                <div class="hidden md:flex gap-8 items-center">
+                    <a href="index.html" class="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors border border-slate-200 px-3 py-1.5 rounded-md hover:bg-slate-50"><i data-lucide="arrow-left" class="w-4 h-4 inline mr-1"></i>Org Home</a>
+                    <a href="#summary" class="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors">Summary</a>
+                    <a href="#data-structure" class="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors">Data Structure</a>
+                    <a href="#notebooks" class="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors">Notebooks</a>
+                    <a href="optics.html" class="text-sm font-medium text-primary-600 hover:text-primary-800 transition-colors font-bold">Use OPTICS Tool</a>
+                </div>
+                <div class="flex gap-4">
+                    <a href="https://github.com/VisualPhysiologyDB/visual-physiology-opsin-db" target="_blank" class="text-slate-500 hover:text-slate-900 transition-colors">
+                        <i data-lucide="github" class="w-6 h-6"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative overflow-hidden bg-dark text-white pt-24 pb-32">
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute -top-1/2 -right-1/2 w-full h-full bg-gradient-to-b from-primary-900/40 to-transparent rounded-full blur-3xl transform rotate-12 opacity-60"></div>
+            <div class="absolute -bottom-1/2 -left-1/2 w-full h-full bg-gradient-to-t from-primary-600/20 to-transparent rounded-full blur-3xl transform -rotate-12 opacity-60"></div>
+        </div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
+                Visual Physiology Opsin Database
+            </h1>
+            <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-300 mb-10">
+                A newly compiled database of opsin genes and machine-learning models to predict peak-sensitivity (&lambda;<sub>max</sub>) phenotypes.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#data-structure" class="inline-flex items-center justify-center px-8 py-3.5 border border-transparent text-base font-medium rounded-lg text-white bg-primary-600 hover:bg-primary-500 shadow-lg shadow-primary-600/30 transition-all hover:-translate-y-0.5">
+                    <i data-lucide="download" class="w-5 h-5 mr-2"></i> Access Data
+                </a>
+                <a href="https://doi.org/10.5281/zenodo.12213246" target="_blank" class="inline-flex items-center justify-center px-8 py-3.5 border border-slate-700 text-base font-medium rounded-lg text-slate-300 bg-slate-800 hover:bg-slate-700 hover:text-white transition-all hover:-translate-y-0.5">
+                    <i data-lucide="book" class="w-5 h-5 mr-2"></i> Zenodo DOI
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Summary Section -->
+    <section id="summary" class="py-24 bg-slate-50 border-b border-slate-200">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-slate-900 tracking-tight mb-8">Summary of VPOD v1.3</h2>
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+                <ul class="space-y-6 text-slate-600 text-lg">
+                    <li class="flex items-start">
+                        <i data-lucide="check-circle-2" class="w-6 h-6 text-primary-500 mr-3 mt-1 flex-shrink-0"></i>
+                        <span>Contains <strong>1,714 unique opsin genotypes</strong> and corresponding &lambda;<sub>max</sub> phenotypes collected across all animals from 120+ separate publications.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i data-lucide="check-circle-2" class="w-6 h-6 text-primary-500 mr-3 mt-1 flex-shrink-0"></i>
+                        <span>Curates all heterologously expressed, and a partial collection of physiologically inferred opsin genes.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i data-lucide="check-circle-2" class="w-6 h-6 text-primary-500 mr-3 mt-1 flex-shrink-0"></i>
+                        <span>Uses VPOD data and <a href="https://github.com/omicsEye/deepbreaks" target="_blank" class="text-primary-600 hover:underline">deepBreaks</a> to show regression-based machine learning (ML) models reliably predict &lambda;<sub>max</sub>, account for epistatic (non-additive) effects, and identify functional amino acid sites.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i data-lucide="check-circle-2" class="w-6 h-6 text-primary-500 mr-3 mt-1 flex-shrink-0"></i>
+                        <span>Lays the groundwork for future robust exploration of molecular-evolutionary patterns governing phenotype.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Structure Section -->
+    <section id="data-structure" class="py-24 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-slate-900 tracking-tight mb-8">Database File Structure</h2>
+            
+            <p class="text-slate-600 mb-8 max-w-3xl">VPOD provides both fully curated machine-learning ready datasets and the raw database files for custom querying using SQLite.</p>
+
+            <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-primary-100 p-2 rounded-lg text-primary-600">
+                            <i data-lucide="folder-open" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Formatted Data Subsets</h3>
+                    </div>
+                    <p class="text-slate-600 text-sm mb-4">Located in <code>vpod_data/VPOD_1.3/formatted_data_subsets/</code>. Subsets suitable for direct model training without requiring MySQL or sequence alignment.</p>
+                    <ul class="text-sm space-y-2 text-slate-500">
+                        <li><span class="font-mono text-slate-800">xxx.txt</span> - Unaligned data subsets.</li>
+                        <li><span class="font-mono text-slate-800">xxx_aligned.txt</span> - Aligned data subsets.</li>
+                        <li><span class="font-mono text-slate-800">VPOD_xxx_het_1.3.fasta</span> - Fully aligned and formatted subsets.</li>
+                        <li><span class="font-mono text-slate-800">xxx_meta.tsv</span> - Metadata files (species, accession, &lambda;<sub>max</sub>).</li>
+                    </ul>
+                </div>
+
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-6">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="bg-slate-200 p-2 rounded-lg text-slate-700">
+                            <i data-lucide="database" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900">Raw Database Files</h3>
+                    </div>
+                    <p class="text-slate-600 text-sm mb-4">Located in <code>vpod_data/VPOD_1.3/raw_database_files/</code>. Load into SQLite to create custom datasets.</p>
+                    <ul class="text-sm space-y-2 text-slate-500">
+                        <li><span class="font-mono text-slate-800">litsearch.csv</span> - Literature search information.</li>
+                        <li><span class="font-mono text-slate-800">references.csv</span> - All publication references.</li>
+                        <li><span class="font-mono text-slate-800">opsins.csv</span> - Sequence data & taxonomic metadata.</li>
+                        <li><span class="font-mono text-slate-800">heterologous.csv</span> - Opsin phenotype data & experimental metadata.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="bg-dark rounded-xl overflow-hidden shadow-xl">
+                <div class="flex items-center justify-between px-4 py-3 bg-slate-800 border-b border-slate-700">
+                    <div class="flex gap-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    </div>
+                    <span class="text-xs font-mono text-slate-400">Clone VPOD</span>
+                </div>
+                <div class="p-6">
+                    <pre class="text-sm font-mono text-slate-300 overflow-x-auto custom-scrollbar leading-relaxed">git clone https://github.com/VisualPhysiologyDB/visual-physiology-opsin-db.git
+cd visual-physiology-opsin-db
+<span class="text-slate-500"># Start exploring with vpod_main_wf.ipynb</span></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scripts and Notebooks Section -->
+    <section id="notebooks" class="py-24 bg-slate-50 border-t border-slate-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-slate-900 tracking-tight mb-12 text-center">Workflows & Analysis Notebooks</h2>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <h4 class="font-bold text-lg text-slate-900 mb-3 flex items-center"><i data-lucide="play-circle" class="w-5 h-5 mr-2 text-primary-600"></i> Primary ML Workflow</h4>
+                    <p class="text-sm text-slate-600 mb-4"><code>vpod_main_wf.ipynb</code> is the primary notebook for users. It contains a full pipeline for creating a local instance of VPOD using SQLite, formatting datasets, and training ML models using <em>deepBreaks</em>.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <h4 class="font-bold text-lg text-slate-900 mb-3 flex items-center"><i data-lucide="split-square-vertical" class="w-5 h-5 mr-2 text-primary-600"></i> Sequence Manipulation</h4>
+                    <p class="text-sm text-slate-600 mb-4">Includes tools for generating <em>chimeras</em>, <em>in-silico deep-mutational-scanning (DMS)</em>, and reciprocal mutagenesis to build theoretical opsin variants for model testing.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <h4 class="font-bold text-lg text-slate-900 mb-3 flex items-center"><i data-lucide="git-branch" class="w-5 h-5 mr-2 text-primary-600"></i> Phylogenetic Imputation</h4>
+                    <p class="text-sm text-slate-600 mb-4">R-based tools (<code>Phylogenetic_Imputation.Rmd</code>) to load tree files, make &lambda;<sub>max</sub> predictions via phylogenetic imputation, and compare them directly against ML outputs.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <h4 class="font-bold text-lg text-slate-900 mb-3 flex items-center"><i data-lucide="layers" class="w-5 h-5 mr-2 text-primary-600"></i> Mine-n-Match (MNM)</h4>
+                    <p class="text-sm text-slate-600 mb-4">Advanced workflow combining heterologous expression data with <em>in-vivo</em> correlations to augment datasets for more robust taxonomic subset modeling.</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="optics.html" class="inline-flex items-center text-primary-600 font-bold hover:text-primary-800 transition-colors">
+                    Looking to just run predictions? Check out the OPTICS Tool instead. <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="flex items-center justify-center gap-2 mb-6">
+                <i data-lucide="database" class="text-primary-500 w-6 h-6"></i>
+                <span class="font-bold text-xl tracking-tight text-white">VPOD</span>
+            </div>
+            <p class="text-slate-400 text-sm mb-6 max-w-md mx-auto">
+                Maintained by Seth A. Frazer &amp; Todd H. Oakley <br>
+                University of California, Santa Barbara
+            </p>
+            <div class="flex justify-center gap-6">
+                <a href="https://github.com/VisualPhysiologyDB/visual-physiology-opsin-db" class="text-slate-400 hover:text-white transition-colors">
+                    <span class="sr-only">GitHub</span>
+                    <i data-lucide="github" class="w-6 h-6"></i>
+                </a>
+                <a href="index.html" class="text-slate-400 hover:text-white transition-colors text-sm font-medium flex items-center">
+                    <i data-lucide="dna" class="w-5 h-5 mr-2"></i> Visual Physiology DB Org
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
