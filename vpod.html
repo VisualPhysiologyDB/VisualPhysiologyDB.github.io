@@ -46,9 +46,10 @@
                     <i data-lucide="database" class="text-primary-600 w-8 h-8"></i>
                     <span class="font-bold text-xl tracking-tight text-slate-900">VPOD <span class="text-xs font-medium bg-primary-100 text-primary-900 px-2 py-1 rounded-full ml-1">v1.3</span></span>
                 </div>
-                <div class="hidden md:flex gap-8 items-center">
+                <div class="hidden lg:flex gap-6 items-center">
                     <a href="index.html" class="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors border border-slate-200 px-3 py-1.5 rounded-md hover:bg-slate-50"><i data-lucide="arrow-left" class="w-4 h-4 inline mr-1"></i>Org Home</a>
                     <a href="#summary" class="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors">Summary</a>
+                    <a href="#explorer" class="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors">Explorer</a>
                     <a href="#data-structure" class="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors">Data Structure</a>
                     <a href="#notebooks" class="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors">Notebooks</a>
                     <a href="optics.html" class="text-sm font-medium text-primary-600 hover:text-primary-800 transition-colors font-bold">Use OPTICS Tool</a>
@@ -79,6 +80,9 @@
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <a href="#data-structure" class="inline-flex items-center justify-center px-8 py-3.5 border border-transparent text-base font-medium rounded-lg text-white bg-primary-600 hover:bg-primary-500 shadow-lg shadow-primary-600/30 transition-all hover:-translate-y-0.5">
                     <i data-lucide="download" class="w-5 h-5 mr-2"></i> Access Data
+                </a>
+                <a href="https://visphys.eemb.ucsb.edu/" target="_blank" class="inline-flex items-center justify-center px-8 py-3.5 border border-slate-700 text-base font-medium rounded-lg text-slate-300 bg-slate-800 hover:bg-slate-700 hover:text-white transition-all hover:-translate-y-0.5">
+                    <i data-lucide="search" class="w-5 h-5 mr-2"></i> Open VPOD Explorer
                 </a>
                 <a href="https://doi.org/10.5281/zenodo.12213246" target="_blank" class="inline-flex items-center justify-center px-8 py-3.5 border border-slate-700 text-base font-medium rounded-lg text-slate-300 bg-slate-800 hover:bg-slate-700 hover:text-white transition-all hover:-translate-y-0.5">
                     <i data-lucide="book" class="w-5 h-5 mr-2"></i> Zenodo DOI
@@ -114,15 +118,59 @@
         </div>
     </section>
 
+    <!-- Explorer Section -->
+    <section id="explorer" class="py-24 bg-white">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-8 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-100 text-primary-900 text-sm font-medium mb-5">
+                        <i data-lucide="mouse-pointer-2" class="w-4 h-4"></i> Interactive access
+                    </div>
+                    <h2 class="text-3xl font-bold text-slate-900 tracking-tight mb-5">VPOD Explorer</h2>
+                    <p class="text-slate-600 leading-relaxed mb-6">
+                        The VPOD Explorer is the interactive web interface for the database. It lets users search across records, apply advanced filters, visualize &lambda;<sub>max</sub> distributions, export queried results, and suggest new data for curator review.
+                    </p>
+                    <a href="https://visphys.eemb.ucsb.edu/" target="_blank" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-primary-600 hover:bg-primary-500 shadow-lg shadow-primary-600/20 transition-all hover:-translate-y-0.5">
+                        Open the Explorer <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
+                    </a>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl border border-slate-200 p-8">
+                    <h3 class="text-xl font-bold text-slate-900 mb-6">Explorer vs. GitHub Database</h3>
+                    <div class="space-y-5">
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-primary-100 text-primary-600 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="github" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-slate-900 mb-1">VPOD on GitHub</h4>
+                                <p class="text-sm text-slate-600 leading-relaxed">Best for versioned releases, raw database files, formatted machine-learning subsets, notebooks, and fully reproducible local workflows.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="search" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-slate-900 mb-1">VPOD Explorer</h4>
+                                <p class="text-sm text-slate-600 leading-relaxed">Best for browser-based querying, filtering, quick CSV export, citation access, and community suggestions for new data entries.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Data Structure Section -->
-    <section id="data-structure" class="py-24 bg-white">
+    <section id="data-structure" class="py-24 bg-slate-50 border-t border-slate-200">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl font-bold text-slate-900 tracking-tight mb-8">Database File Structure</h2>
             
             <p class="text-slate-600 mb-8 max-w-3xl">VPOD provides both fully curated machine-learning ready datasets and the raw database files for custom querying using SQLite.</p>
 
             <div class="grid md:grid-cols-2 gap-8 mb-12">
-                <div class="bg-slate-50 border border-slate-200 rounded-xl p-6">
+                <div class="bg-white border border-slate-200 rounded-xl p-6">
                     <div class="flex items-center gap-3 mb-4">
                         <div class="bg-primary-100 p-2 rounded-lg text-primary-600">
                             <i data-lucide="folder-open" class="w-5 h-5"></i>
@@ -138,7 +186,7 @@
                     </ul>
                 </div>
 
-                <div class="bg-slate-50 border border-slate-200 rounded-xl p-6">
+                <div class="bg-white border border-slate-200 rounded-xl p-6">
                     <div class="flex items-center gap-3 mb-4">
                         <div class="bg-slate-200 p-2 rounded-lg text-slate-700">
                             <i data-lucide="database" class="w-5 h-5"></i>
@@ -149,8 +197,8 @@
                     <ul class="text-sm space-y-2 text-slate-500">
                         <li><span class="font-mono text-slate-800">litsearch.csv</span> - Literature search information.</li>
                         <li><span class="font-mono text-slate-800">references.csv</span> - All publication references.</li>
-                        <li><span class="font-mono text-slate-800">opsins.csv</span> - Sequence data & taxonomic metadata.</li>
-                        <li><span class="font-mono text-slate-800">heterologous.csv</span> - Opsin phenotype data & experimental metadata.</li>
+                        <li><span class="font-mono text-slate-800">opsins.csv</span> - Sequence data &amp; taxonomic metadata.</li>
+                        <li><span class="font-mono text-slate-800">heterologous.csv</span> - Opsin phenotype data &amp; experimental metadata.</li>
                     </ul>
                 </div>
             </div>
@@ -176,7 +224,7 @@ cd visual-physiology-opsin-db
     <!-- Scripts and Notebooks Section -->
     <section id="notebooks" class="py-24 bg-slate-50 border-t border-slate-200">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-slate-900 tracking-tight mb-12 text-center">Workflows & Analysis Notebooks</h2>
+            <h2 class="text-3xl font-bold text-slate-900 tracking-tight mb-12 text-center">Workflows &amp; Analysis Notebooks</h2>
 
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">

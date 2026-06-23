@@ -40,10 +40,12 @@
                     <i data-lucide="dna" class="text-primary-600 w-8 h-8"></i>
                     <span class="font-bold text-xl tracking-tight text-slate-900">Visual Physiology DB</span>
                 </div>
-                <div class="hidden md:flex gap-8">
+                <div class="hidden lg:flex gap-6">
                     <a href="#projects" class="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors">Projects</a>
+                    <a href="#mission" class="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors">Mission</a>
                     <a href="#publications" class="text-sm font-medium text-slate-600 hover:text-primary-600 transition-colors">Publications</a>
                     <a href="vpod.html" class="text-sm font-medium text-primary-600 hover:text-primary-800 transition-colors">VPOD</a>
+                    <a href="https://visphys.eemb.ucsb.edu/" target="_blank" class="text-sm font-medium text-primary-600 hover:text-primary-800 transition-colors">Explorer</a>
                     <a href="optics.html" class="text-sm font-medium text-primary-600 hover:text-primary-800 transition-colors">OPTICS</a>
                 </div>
                 <div class="flex gap-4">
@@ -81,11 +83,11 @@
     <section id="projects" class="py-24 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-slate-900 tracking-tight">Our Primary Repositories</h2>
-                <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">Open-source datasets and computational tools developed by the Visual Physiology DB organization.</p>
+                <h2 class="text-3xl font-bold text-slate-900 tracking-tight">Tools &amp; Data Resources</h2>
+                <p class="mt-4 text-lg text-slate-600 max-w-2xl mx-auto">Open-source datasets, interfaces, and computational tools developed by the Visual Physiology DB organization.</p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
                 <!-- VPOD Card -->
                 <a href="vpod.html" class="block group">
                     <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-xl hover:border-primary-200 transition-all h-full relative overflow-hidden">
@@ -100,7 +102,29 @@
                             The <strong>Visual Physiology Opsin Database</strong> is a newly compiled database containing 1,714 unique opsin genotypes and corresponding &lambda;<sub>max</sub> phenotypes collected across all animals from 120+ publications.
                         </p>
                         <div class="flex items-center text-primary-600 font-medium group-hover:translate-x-1 transition-transform">
-                            View Database <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                            View Database Details <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- VPOD Explorer Card -->
+                <a href="https://visphys.eemb.ucsb.edu/" target="_blank" class="block group">
+                    <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 hover:shadow-xl hover:border-primary-200 transition-all h-full relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-primary-50 rounded-bl-full -z-10 group-hover:scale-110 transition-transform"></div>
+                        <div class="w-14 h-14 bg-primary-100 text-primary-600 rounded-xl flex items-center justify-center mb-6">
+                            <i data-lucide="search" class="w-7 h-7"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900 mb-3 flex items-center gap-2">
+                            VPOD Explorer <span class="text-xs font-medium bg-emerald-50 text-emerald-700 px-2 py-1 rounded-full">Interactive</span>
+                        </h3>
+                        <p class="text-slate-600 mb-6 leading-relaxed">
+                            An interactive web version of VPOD for searching records, applying filters, exporting queried data, and suggesting new entries for curator review.
+                        </p>
+                        <p class="text-sm text-slate-500 mb-6 leading-relaxed">
+                            Use the GitHub database for versioned files, notebooks, and reproducible local workflows; use the Explorer when you want to query and download data directly in the browser.
+                        </p>
+                        <div class="flex items-center text-primary-600 font-medium group-hover:translate-x-1 transition-transform">
+                            Open Explorer <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
                         </div>
                     </div>
                 </a>
@@ -123,6 +147,86 @@
                         </div>
                     </div>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section id="mission" class="py-24 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 tracking-tight">Mission &amp; Roadmap</h2>
+                <p class="mt-4 text-lg text-slate-600 max-w-3xl mx-auto">
+                    VisualPhysiologyDB is building an open-source ecosystem for connecting light-sensitive genes, physiological phenotypes, ecological context, and predictive models of light sensitivity.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-[1.2fr_0.8fr] gap-8 mb-10">
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200">
+                    <div class="flex items-center gap-3 mb-5">
+                        <div class="w-12 h-12 bg-primary-100 text-primary-600 rounded-xl flex items-center justify-center">
+                            <i data-lucide="compass" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-slate-900">Long-term Vision</h3>
+                    </div>
+                    <div class="space-y-4 text-slate-600 leading-relaxed">
+                        <p>
+                            Our goal is to make visual and light-interaction phenotypes accessible, computable, and reusable across scales: from individual amino-acid substitutions to ecological communities and environmental sequence datasets.
+                        </p>
+                        <p>
+                            The project began with VPOD, which organizes opsin genotype-phenotype data for spectral sensitivity, and OPTICS, which uses VPOD-trained models to predict opsin spectral sensitivity from sequence. Future development will broaden this ecosystem into a more general visual physiology resource for sensory ecology, molecular evolution, biodiversity science, and AI-enabled genotype-phenotype prediction.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-dark rounded-2xl p-8 text-white shadow-xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 bg-white/10 text-primary-500 rounded-xl flex items-center justify-center">
+                            <i data-lucide="sparkles" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold">Guiding Focus</h3>
+                    </div>
+                    <ul class="space-y-5 text-slate-300">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="unlock" class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0"></i>
+                            <span>Open licensing, transparent provenance, and reusable datasets.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="workflow" class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0"></i>
+                            <span>Reproducible workflows that connect gene discovery, phenotype prediction, and ecological analysis.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="users" class="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0"></i>
+                            <span>Contributor pathways for data submission, issue reporting, feature requests, and community-developed workflows.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200">
+                    <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                        <i data-lucide="list-checks" class="w-5 h-5 text-primary-600"></i> Near-term Priorities
+                    </h3>
+                    <ul class="space-y-4 text-slate-600">
+                        <li class="flex gap-3"><span class="text-primary-600 font-bold">1.</span><span>Improve VPOD data structure, documentation, validation, and versioning.</span></li>
+                        <li class="flex gap-3"><span class="text-primary-600 font-bold">2.</span><span>Improve OPTICS usability, batch prediction, uncertainty reporting, and quality control.</span></li>
+                        <li class="flex gap-3"><span class="text-primary-600 font-bold">3.</span><span>Develop OPTICS-Community workflows for predicting light-sensitivity landscapes from species lists, community matrices, and environmental sequence datasets.</span></li>
+                        <li class="flex gap-3"><span class="text-primary-600 font-bold">4.</span><span>Provide benchmark workflows, tutorials, example datasets, and standardized outputs for reproducible research.</span></li>
+                    </ul>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl p-8 border border-slate-200">
+                    <h3 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                        <i data-lucide="telescope" class="w-5 h-5 text-primary-600"></i> Longer-term Goals
+                    </h3>
+                    <ul class="space-y-4 text-slate-600">
+                        <li class="flex gap-3"><span class="text-primary-600 font-bold">1.</span><span>Expand beyond &lambda;<sub>max</sub> to additional opsin and light-interaction phenotypes, including kinetics, chromophore effects, expression context, and assay metadata.</span></li>
+                        <li class="flex gap-3"><span class="text-primary-600 font-bold">2.</span><span>Incorporate ecological and environmental metadata such as habitat, depth, light environment, diel activity, and community composition.</span></li>
+                        <li class="flex gap-3"><span class="text-primary-600 font-bold">3.</span><span>Support community-level and ecosystem-level summaries of predicted light sensitivity.</span></li>
+                        <li class="flex gap-3"><span class="text-primary-600 font-bold">4.</span><span>Improve interoperability with biodiversity databases, sequence repositories, workflow managers, Galaxy, and downstream modeling tools.</span></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -160,7 +264,7 @@
                         <div>
                             <h4 class="font-bold text-slate-900 mb-2 text-lg">Discovering genotype-phenotype relationships with machine learning and the Visual Physiology Opsin Database (VPOD)</h4>
                             <p class="text-slate-600 font-serif leading-relaxed text-sm mb-3">
-                                Seth A. Frazer, Mahdi Baghbanzadeh, Ali Rahnavard, Keith A. Crandall, & Todd H Oakley. <em>GigaScience</em>, 2024.09.01.
+                                Seth A. Frazer, Mahdi Baghbanzadeh, Ali Rahnavard, Keith A. Crandall, &amp; Todd H Oakley. <em>GigaScience</em>, 2024.09.01.
                             </p>
                             <a href="https://doi.org/10.1093/gigascience/giae073" target="_blank" class="inline-flex items-center text-sm font-medium text-primary-600 hover:text-primary-800">
                                 Read Paper <i data-lucide="external-link" class="w-3 h-3 ml-1"></i>
